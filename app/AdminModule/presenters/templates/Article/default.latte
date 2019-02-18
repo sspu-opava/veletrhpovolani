@@ -1,0 +1,42 @@
+{block header}
+<div class="container-fluid">
+	<div class="row pt-5 pb-5 bg-info">
+		<div class="col-12">
+			<h2 class="text-center text-uppercase text-white">Články</h2>
+		</div>
+	</div>
+</div>
+{/block header}
+
+{block content}
+
+<div class="container">
+    <div class="row mt-4 mb-4">
+		<div class="col-md-8">
+			<h3>Levý sloupec</h3>
+			{foreach $list as $info}
+			<article>
+				<h4>{$info->title|upper}</h4>
+				<p>{$info->content}</p>
+			</article>
+			{/foreach}
+		</div>
+		<div class="col-md-4">
+			<h3>Pravý sloupec</h3>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt excepturi, quas nisi iusto, ut explicabo
+				ducimus blanditiis omnis magnam laboriosam nobis? Consequatur, nesciunt amet? Accusantium at harum deleniti
+				incidunt voluptatum.</p>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto ab sed ullam neque non animi voluptas dolor, cum
+				illum, porro nesciunt sunt dolores aut vitae!</p>
+		</div>
+	</div>
+</div>
+{/block}
+
+{block scripts}
+{include parent}
+{/block}
+
+
+{block head}
+{/block}

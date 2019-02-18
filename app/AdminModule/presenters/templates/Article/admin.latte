@@ -1,0 +1,90 @@
+{block header}
+<div class="container-fluid">
+	<div class="row pt-5 pb-5 bg-secondary">
+		<div class="col-12">
+			<h2 n:block=title class="text-center text-uppercase text-white">Články - administrace</h2>
+		</div>
+	</div>
+</div>
+{/block header}
+
+{block content}
+<div class="container">
+
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<div class="x_panel">
+			<div class="x_title">
+				<h2>Table design <small>Custom design</small></h2>
+				<ul class="nav navbar-right panel_toolbox">
+					<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#">Settings 1</a>
+							</li>
+							<li><a href="#">Settings 2</a>
+							</li>
+						</ul>
+					</li>
+					<li><a class="close-link"><i class="fa fa-close"></i></a>
+					</li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+
+			<div class="x_content">
+
+				<p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p>
+
+				<div class="table-responsive">
+					<table class="table table-striped jambo_table bulk_action">
+						<thead>
+							<tr class="headings">
+								<th>
+									<input type="checkbox" id="check-all" class="flat">
+								</th>
+								<th class="column-title"><a n:href="admin 'title'">Titulek</a></th>
+								<th class="column-title"><a n:href="admin 'published DESC'">Publikováno</a></th>
+								<th class="column-title"><a n:href="admin 'edited'">Editováno</a></th>
+								<th class="column-title"><a n:href="admin 'author_id'">Autor</a></th>
+								<th class="column-title no-link last"><span class="nobr">Akce</span>
+								</th>
+								<th class="bulk-actions" colspan="7">
+									<a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i
+										 class="fa fa-chevron-down"></i></a>
+								</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							{foreach $list as $row}
+							<tr class="even pointer">								
+								<td class="a-center ">
+									<input type="checkbox" class="flat" name="table_records">
+								</td>
+								<td scope="row"><a n:href="view $row->idarticle">{$row->title}</a></td>
+								<td>{$row->published|date:'j. n. Y'}</td>
+								<td>{$row->edited|date:'j. n. Y'}</td>
+								<td>{$row->ref('user','author_id')->username}</td>
+								<td class=" last"><a n:href="update $row->idarticle">Upravit</a> <a n:href="delete $row->idarticle">Smazat</a></td>
+								</td>
+							</tr>
+							{/foreach}
+						</tbody>
+					</table>
+					<p><a n:href="insert">Nový článek</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{/block}
+
+{block scripts}
+{include parent}
+{/block}
+
+
+{block head}
+{/block}
